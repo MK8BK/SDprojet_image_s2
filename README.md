@@ -1,6 +1,6 @@
 # SDprojet_image_s2
-Projet de OCR du cours Introduction a la science des donnees, S2, universite paris saclay
-(a modifier clairement, j'ai pas d'accents)
+Projet de OCR du cours Introduction à la Science des données, S2, Université Paris-Saclay
+(à ne pas modifier clairement, j'ai des accents)
 
 
 
