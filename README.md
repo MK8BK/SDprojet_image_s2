@@ -114,19 +114,16 @@ puis on récupère tous les pixel noirs(leurs positions) et on trace un nuage de
 En effectuant une régression linéaire, on obtient le ESS:
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  La somme totale des carrés des différences entre données expérimentales et prédictions de la régression.
-$$
-ESS = \sum_{i=1}^{n} (y_i - (a*x_i + b))^2
-$$
+
+$\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>ESS = \sum_{i=1}^{n} (y_i - (a*x_i + b))^2$
+
 
 où $y_i$ et $x_i$ sont les valeurs expérimentales,
 
 $a$ et $b$ sont les coefficients obtenues par régression linéaire. 
 <br><br>
-$$
-    a =\frac{\sum_{}^{} (x_i - \bar{x})*(y_i - \bar{y})}{\sum_{(x_i - \bar{x})^2}}
-    \>\>,\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>
-    b = \bar{y} - a*\bar{x}
-$$
+$\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>a =\frac{\sum_{}^{} (x_i - \bar{x})*(y_i - \bar{y})}{\sum_{(x_i - \bar{x})^2}}\>\>,\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>b = \bar{y} - a*\bar{x}$
+
 où $\bar{x}$ et $\bar{y}$ sont les moyennes des échantillons respectifs.
 <br><br>
 
