@@ -2,6 +2,7 @@
 ##############################################################################
 # Imports
 
+import subprocess
 import glob
 import inspect
 import os
@@ -31,6 +32,20 @@ import seaborn as sns  # type: ignore
 
 sns.set()
 warnings.simplefilter(action="ignore", category=FutureWarning)
+
+
+""
+def run_without_error(shell_command: str) -> bool:
+    """
+    Run the given shell command
+
+    Print the command ouput (even in Jupyter) and return whether the
+    command ran without error (exit code 0)
+    """
+    status = subprocess.run(shell_command.split(), capture_output=True)
+    print(status.stdout.decode())
+    return status.returncode == 0
+
 
 ##############################################################################
 # Traitement d'images
@@ -438,3 +453,106 @@ def show_source(function: Callable) -> None:
     css = formatter.get_style_defs(".pygments")
     html = f"<style>{css}</style>{html_code}"
     display(HTML(html))
+
+
+""
+#from sklearn.neighbors import RadiusNeighborsClassifier
+#
+##défintion du modèle et ajustement
+#parzen_model = RadiusNeighborsClassifier(radius=3)
+#parzen_model.fit(Xtrain, Ytrain)
+#
+##prédictions
+#Ytrain_predicted = parzen_model.predict(Xtrain)
+#Ytest_predicted = parzen_model.predict(Xtest)
+#
+## Calcul des erreurs
+#e_tr = error_rate(Ytrain, Ytrain_predicted)
+#e_te = error_rate(Ytest, Ytest_predicted)
+#
+#print("CLASSIFICATEUR DES FENETRES DE PARZEN")
+#print("Training error:", e_tr)
+#print("Test error:", e_te)
+#make_scatter_plot(X, images.apply(transparent_background_filter),
+#                  train_index, test_index, 
+#                  predicted_labels=Ytest_predicted, axis='square')
+## Classifier
+#
+#class OneRule:
+#    def __init__(self):
+#        '''
+#        This constructor is supposed to initialize data members.
+#Expand
+#OneRule.txt
+#3 KB
+#﻿
+## Classifier
+#
+#class OneRule:
+#    def __init__(self):
+#        '''
+#        This constructor is supposed to initialize data members.
+#        Use triple quotes for function documentation. 
+#        '''
+#        self.is_trained = False  
+#        self.ig = 0     # Index of the good feature G
+#        self.w = 1      # Feature polarity
+#        self.theta = 0  # Threshold on the good feature
+#
+#    def fit(self, X: pd.DataFrame, Y: pd.Series) -> None:
+#        '''
+#        This function should train the model parameters.
+#        
+#        Args:
+#            X: Training data matrix of dim num_train_samples * num_feat.
+#            Y: Training label matrix of dim num_train_samples * 1.
+#        Both inputs are panda dataframes.
+#        '''
+#        # Compute the correlation between the class and the attributes
+#        # Hint:
+#        # - Use pd.concat to reconstruct the original table with both attributes and class
+#        # - Compute the correlation matrix
+#        # - Extract the "class" column, and remove its "class" row
+#        # Remplacer la ligne suivante par le code adéquat
+#        data = pd.concat([X,Y])
+#        data_corr = data.corr()
+#        # Store in self.attribute the attribute which maximizes the correlation
+#        # Hint: use the idxmax method
+#        # Remplacer la ligne suivante par le code adéquat
+#        raise NotImplementedError("code non implanté ligne 366");
+#        # Store in self.sign the sign of the correlation for this attribute (1 or -1)
+#        # Hint: use np.sign
+#        # Remplacer la ligne suivante par le code adéquat
+#        raise NotImplementedError("code non implanté ligne 370");
+#        # Choose a threshold and store it in self.theta
+#        # Hint:
+#        # - Compute the mean of the value of the attribute for the elements
+#        #   in the first class
+#        # - Compute the mean of the value of the attribute for the elements
+#        #   in the second class
+#        # - Take as threshold the average of these
+#        # Remplacer la ligne suivante par le code adéquat
+#        raise NotImplementedError("code non implanté ligne 379");
+#        self.is_trained = True
+#        print(f"FIT: Training Successful. Feature selected: {self.attribute}; "
+#              f"Polarity: {self.sign}; Threshold: {self.theta:5.2f}.")
+#
+#    def predict(self, X: pd.DataFrame) -> pd.Series:
+#        '''
+#        Return predictions for the elements described by X
+#        
+#        Args:
+#            X: Test data matrix of dim num_test_samples * num_feat.
+#        Return:
+#            Y: Predicted label matrix of dim num_test_samples * 1.
+#        '''
+#        # Fetch the feature of interest and multiply by polarity
+#        G = X[self.attribute]
+#        # Make decisions according to the threshold theta and sign
+#        Y = G.copy()
+#        Y[G < self.theta] = -self.sign
+#        Y[G >= self.theta] = self.sign
+#        print("PREDICT: Prediction done")
+#        return Y
+#OneRule.txt
+#3 KB
