@@ -115,30 +115,30 @@ En effectuant une régression linéaire, on obtient le ESS:
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  La somme totale des carrés des différences entre données expérimentales et prédictions de la régression.
 
-$\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>ESS = \sum_{i=1}^{n} (y_i - (a*x_i + b))^2$
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ESS = \sum_{i=1}^{n} (y_i - (a*x_i + b))^2$
 
 
 où $y_i$ et $x_i$ sont les valeurs expérimentales,
 
 $a$ et $b$ sont les coefficients obtenues par régression linéaire. 
 <br><br>
-$\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>a =\frac{\sum_{}^{} (x_i - \bar{x})*(y_i - \bar{y})}{\sum_{(x_i - \bar{x})^2}}\>\>,\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>\>b = \bar{y} - a*\bar{x}$
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$a =\frac{\sum_{}^{} (x_i - \bar{x})*(y_i - \bar{y})}{\sum_{(x_i - \bar{x})^2}}$,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $b = \bar{y} - a*\bar{x}$
 
 où $\bar{x}$ et $\bar{y}$ sont les moyennes des échantillons respectifs.
 <br><br>
 
 
 
-<p align="center" style="display:inline-block">
+<p align="center" style="display:block">
   <br>
   <img src="./data/docs/b03.PNG" align="left" style="width:30%; height:auto; border: 5px solid">
   <img src="./data/docs/rotationsb3.png" align="left" style="width:30%; height:auto; border: 5px solid">
   <img src="./data/docs/regressionb3.png" align="left" style="width:30%; height:auto; border: 5px solid">
-</p><br>
+</p><br><br>
 
 
-<br>
-
+<br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
 On peut alors grapher le ESS de chaque image:
 <br><br>
 <img src="./data/docs/linreg2.PNG" align="left" style="width:90%; border: 5px solid"><br>
