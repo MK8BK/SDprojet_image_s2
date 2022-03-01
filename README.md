@@ -158,6 +158,9 @@ On peut alors grapher le ESS de chaque image:
 
 ## Démonstration
 Repositoire github https://github.com/MK8BK/SDprojet_image_s2
+
+<br>
+
 <a target="blank" href="https://nbviewer.org/github/MK8BK/SDprojet_image_s2/blob/master/4_analyse_de_donnees.ipynb?flush_cache=true">Voire sur nbviewer</a>
 
 Afin d'exécuter, cliquer sur le bouton "execute on binder" (trois petits cercles en haut à droite).
