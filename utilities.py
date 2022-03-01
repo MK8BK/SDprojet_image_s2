@@ -234,11 +234,90 @@ def elongation_plot(img: Image.Image, subplot: Axes) -> None:
     )
 
 
+
 ##############################################################################
 # Nouveaux attributs
 
 # Remplacer la ligne suivante par le code adéquat
-# Code non implanté
+def entouree(img, coordonnees: tuple, done: list = []) -> bool:
+    """
+    La fonction entouree prend
+    -img: une image PIL
+    -coordonnees: un tuple de deux entiers
+    -done: une liste
+    retourne : True si il y aune boucle autour du pixel x,y, False sinon
+    modifie sur place la liste done
+    """
+    #coordonnees supposees non extremes, non noires
+    nimg = np.array(img)
+    x = coordonnees[0]
+    y = coordonnees[1]
+    xs = nimg.shape[0]
+    ys = nimg.shape[1]
+    if coordonnees in done:
+        return True
+    if (x==xs-1 or x==0 or y==ys-1 or y==0) and (list(nimg[x][y]) == [255, 255, 255, 255]):
+        return False
+    if list(nimg[x][y]) != [255, 255, 255, 255]:
+        return True
+    else:
+        done.append(coordonnees)
+        c1 = (x, y+1)
+        c2 = (x, y-1)
+        c3 = (x+1, y)
+        c4 = (x-1, y)
+        return (True and  entouree(img, c1, done) and entouree(img,c2, done) and entouree(img,c3, done) and entouree(img,c4, done))
+    
+    
+def boucle(img):
+    instances = []
+    nimg = np.array(img)
+    z = False
+    for line in range(len(nimg)):
+        for column in range(line):
+            if list(nimg[line][column]) == [255,255,255,255]:
+                instance_done = []
+                zero = entouree(img, (line,column), instance_done)
+                if zero:
+                    z = True
+                    instances+=instance_done
+    return (z, instances)
+
+def nb_bandes_zero(img):
+    nimg = np.array(img)
+    xs = nimg.shape[0]
+    ys = nimg.shape[1]
+    answers=[]
+    for i in range(xs):
+        lst = nimg[i]
+        lst = [0 if list(lst[j])==[255,255,255,255] else 1 for j in range(len(lst))]
+        positions = [k for k, v in enumerate(lst) if v==1]
+        #print(positions)
+        diffpos = [positions[index+1]-v for index, v in enumerate(positions[:-1])]
+        #print(diffpos)
+        diffpos = [False if v-1>0 else True for v in diffpos]
+        #print(diffpos)
+        if False in diffpos:
+            #
+            answers.append(0)
+            continue
+        else:
+            answers.append(1)
+            continue
+    return answers.count(0)/len(answers)
+
+from math import sqrt
+
+def linreg(xs,ys):
+    moyenne_x = sum(xs)/len(xs)
+    moyenne_y = sum(ys)/len(ys)
+    a = sum([((x - moyenne_x)*(y - moyenne_y)) for x, y in zip(xs,ys)])/sum([(x-moyenne_x)**2 for x in xs])
+    b = moyenne_y - (a * moyenne_x)
+    rnum = sum([(x - moyenne_x)*(y - moyenne_y) for x, y in zip(xs,ys)])
+    rdenum = sqrt(sum([(x-moyenne_x)**2 for x in xs])*sum([(y-moyenne_y)**2 for y in ys]))
+    r = rnum/rdenum
+    ess = sum([(ye - yt)**2 for ye,yt in zip(ys,[b+a*x for x in xs])])
+    return (a,b,r,ess)
 
 
 ##############################################################################
@@ -359,10 +438,3 @@ def show_source(function: Callable) -> None:
     css = formatter.get_style_defs(".pygments")
     html = f"<style>{css}</style>{html_code}"
     display(HTML(html))
-
-    
-    
-#def boucle(img, start_pixel):
-#    if(start_pixel == img.shape):
-       #plan effectuee, fonction recursive qui par dun point (supposee blanc et qui ssaie de trouver une sortie)
-       #en cours d'implementation
