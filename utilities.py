@@ -248,7 +248,7 @@ def error_rate(solutions: pd.Series, predictions: pd.Series) -> Any:
     """
     Return the error rate between two vectors.
     """
-    sum([1/len(solutions) for i in range(len(solutions)) if solutions[i] != predictions[i]])
+    return sum([1/len(solutions) for i in range(len(solutions)) if solutions[i] != predictions[i]])
 
 
 def split_data(X, Y, verbose=True, seed=0):
