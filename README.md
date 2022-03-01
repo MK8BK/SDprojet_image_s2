@@ -98,6 +98,9 @@ Le ratio de lignes contenant des bandes noires séparées est renvoyé.
 
 La fonction itérative `boucle()` qui appelle la fonction récursive `entouree()` sur chaque pixel blanc d'une image retourne un booléen.
 
+<img src="./data/docs/entouree.PNG" align="center" style="width:98%; max-height:400px; border: 5px solid">
+
+<br><br>
  Si un pixel au moins est entouré "cerné" de cases noires *ie*: pas d'issues vers les extrémités, alors l'image contient une boucle.
 
 <img src="./data/docs/boucles2.PNG" align="left" style="width:45%; max-height:400px; border: 5px solid">
@@ -151,7 +154,7 @@ On peut alors grapher le ESS de chaque image:
 
 ------
 
-<br>
+<br><br><br><br><br><br><br><br>
 
 ## Démonstration
 <a target="blank" href="https://nbviewer.org/github/MK8BK/SDprojet_image_s2/blob/master/4_analyse_de_donnees.ipynb?flush_cache=true">Voire sur nbviewer</a>
