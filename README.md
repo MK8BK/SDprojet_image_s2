@@ -115,16 +115,19 @@ En effectuant une régression linéaire, on obtient le ESS:
     
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  La somme totale des carrés des différences entre données expérimentales et prédictions de la régression.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$ESS = \sum_{i=1}^{n} (y_i - (a*x_i + b))^2$
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://render.githubusercontent.com/render/math?math=ESS = \sum_{i=1}^{n} (y_i - (a*x_i + b))^2">
 
+où y<sub>i</sub> et x<sub>i</sub> sont les valeurs expérimentales,
 
-où $y_i$ et $x_i$ sont les valeurs expérimentales,
-
-$a$ et $b$ sont les coefficients obtenues par régression linéaire. 
+<em>a</em> et <em>b</em> sont les coefficients obtenues par régression linéaire. 
 <br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$a =\frac{\sum_{}^{} (x_i - \bar{x})*(y_i - \bar{y})}{\sum_{(x_i - \bar{x})^2}}$,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $b = \bar{y} - a*\bar{x}$
+<img src="https://render.githubusercontent.com/render/math?math=a =\frac{\sum_{}^{} (x_i - \bar{x})*(y_i - \bar{y})}{\sum_{(x_i - \bar{x})^2}}">
+,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://render.githubusercontent.com/render/math?math=b = \bar{y} - a*\bar{x}">
 
-où $\bar{x}$ et $\bar{y}$ sont les moyennes des échantillons respectifs.
+
+
+où <img src="https://render.githubusercontent.com/render/math?math=\bar{x} , \>\>\> \bar{y}"> sont les moyennes des échantillons respectifs.
 <br><br>
 
 
