@@ -8,6 +8,7 @@ import math
 from numbers import Number
 from typing import Callable, List, Optional, Iterable, Union, Any
 import warnings
+import subprocess
 
 from pygments import highlight  # type: ignore
 from pygments.lexers import PythonLexer  # type: ignore
@@ -102,14 +103,14 @@ def show_color_channels(img: Image.Image) -> Figure:
     black_red_cmap   = LinearSegmentedColormap.from_list('black_red_cmap',   ["black", "red"])
     black_green_cmap = LinearSegmentedColormap.from_list('black_green_cmap', ["black", "green"])
     black_blue_cmap  = LinearSegmentedColormap.from_list('black_blue_cmap',  ["black", "blue"])
-    m = np.array(img)
-    fig = Figure(figsize=(30,5));
+    M = np.array(img)
+    fig = Figure(figsize=(30, 5));
     (subplot, subplotr, subplotg, subplotb) = fig.subplots(1, 4)  # Quatre zones de dessin
     # Dessin de l'image et de ses trois couches
-    subplot.imshow(m)
-    imgr = subplotr.imshow(m[:,:,0], cmap=black_red_cmap,   vmin=0, vmax=255)
-    imgg = subplotg.imshow(m[:,:,1], cmap=black_green_cmap, vmin=0, vmax=255)
-    imgb = subplotb.imshow(m[:,:,2], cmap=black_blue_cmap,  vmin=0, vmax=255)
+    subplot.imshow(M)
+    imgr = subplotr.imshow(M[:,:,0], cmap=black_red_cmap,   vmin=0, vmax=255)
+    imgg = subplotg.imshow(M[:,:,1], cmap=black_green_cmap, vmin=0, vmax=255)
+    imgb = subplotb.imshow(M[:,:,2], cmap=black_blue_cmap,  vmin=0, vmax=255)
     # Ajout des barres d'échelle de couleur aux images
     fig.colorbar(imgr, ax=subplotr);
     fig.colorbar(imgg, ax=subplotg);
@@ -139,10 +140,9 @@ def foreground_filter(
     img: Union[Image.Image, np.ndarray], theta: int = 150
 ) -> np.ndarray:
     """Create a black and white image outlining the foreground."""
-    # Remplacer la ligne suivante par le code adéquat
-    F = np.array(img)
-    F = np.min(F[:,:,0:3], axis=2)
-    F = F < theta
+    M = np.array(img)
+    G = np.min(M[:,:,0:3], axis=2)
+    F = G < theta
     return F
 
 
@@ -179,11 +179,7 @@ def transparent_background(img: Image.Image) -> Image.Image:
 def redness(img: Image.Image) -> float:
     """Return the redness of a PIL image."""
     # Remplacer la ligne suivante par le code adéquat
-    m = np.array(img)
-    G = m[:, :, 1]*1.0
-    R = m[:, :, 0]*1.0
-    F = foreground_filter(m)
-    return np.mean(R[F]) - np.mean(G[F])
+    raise NotImplementedError("code non implanté ligne 168");
 
 
 def elongation(img: Image.Image) -> float:
@@ -349,6 +345,76 @@ def make_scatter_plot(
 
 
 ##############################################################################
+# Classifier
+
+class OneRule:
+    def __init__(self):
+        '''
+        This constructor is supposed to initialize data members.
+        Use triple quotes for function documentation. 
+        '''
+        self.is_trained = False  
+        self.ig = 0     # Index of the good feature G
+        self.w = 1      # Feature polarity
+        self.theta = 0  # Threshold on the good feature
+
+    def fit(self, X: pd.DataFrame, Y: pd.Series) -> None:
+        '''
+        This function should train the model parameters.
+        
+        Args:
+            X: Training data matrix of dim num_train_samples * num_feat.
+            Y: Training label matrix of dim num_train_samples * 1.
+        Both inputs are panda dataframes.
+        '''
+        # Compute the correlation between the class and the attributes
+        # Hint:
+        # - Use pd.concat to reconstruct the original table with both attributes and class
+        # - Compute the correlation matrix
+        # - Extract the "class" column, and remove its "class" row
+        # Remplacer la ligne suivante par le code adéquat
+        data = pd.concat([X,Y])
+        data_corr = data.corr()
+        # Store in self.attribute the attribute which maximizes the correlation
+        # Hint: use the idxmax method
+        # Remplacer la ligne suivante par le code adéquat
+        raise NotImplementedError("code non implanté ligne 366");
+        # Store in self.sign the sign of the correlation for this attribute (1 or -1)
+        # Hint: use np.sign
+        # Remplacer la ligne suivante par le code adéquat
+        raise NotImplementedError("code non implanté ligne 370");
+        # Choose a threshold and store it in self.theta
+        # Hint:
+        # - Compute the mean of the value of the attribute for the elements
+        #   in the first class
+        # - Compute the mean of the value of the attribute for the elements
+        #   in the second class
+        # - Take as threshold the average of these
+        # Remplacer la ligne suivante par le code adéquat
+        raise NotImplementedError("code non implanté ligne 379");
+        self.is_trained = True
+        print(f"FIT: Training Successful. Feature selected: {self.attribute}; "
+              f"Polarity: {self.sign}; Threshold: {self.theta:5.2f}.")
+
+    def predict(self, X: pd.DataFrame) -> pd.Series:
+        '''
+        Return predictions for the elements described by X
+        
+        Args:
+            X: Test data matrix of dim num_test_samples * num_feat.
+        Return:
+            Y: Predicted label matrix of dim num_test_samples * 1.
+        '''
+        # Fetch the feature of interest and multiply by polarity
+        G = X[self.attribute]
+        # Make decisions according to the threshold theta and sign
+        Y = G.copy()
+        Y[G < self.theta] = -self.sign
+        Y[G >= self.theta] = self.sign
+        print("PREDICT: Prediction done")
+        return Y
+
+##############################################################################
 # Revue de code
 
 def show_source(function: Callable) -> None:
@@ -360,9 +426,13 @@ def show_source(function: Callable) -> None:
     html = f"<style>{css}</style>{html_code}"
     display(HTML(html))
 
-    
-    
-#def boucle(img, start_pixel):
-#    if(start_pixel == img.shape):
-       #plan effectuee, fonction recursive qui par dun point (supposee blanc et qui ssaie de trouver une sortie)
-       #en cours d'implementation
+def run_without_error(shell_command: str) -> bool:
+    """
+    Run the given shell command
+
+    Print the command ouput (even in Jupyter) and return whether the
+    command ran without error (exit code 0)
+    """
+    status = subprocess.run(shell_command.split(), capture_output=True)
+    print(status.stdout.decode())
+    return status.returncode == 0
