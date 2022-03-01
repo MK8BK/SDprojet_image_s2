@@ -76,7 +76,7 @@ Nous employons 4 attributs :
 ### Élongation
 L'algorithme implémenté dans la fonction `elongation()` disponible depuis la semaine 3 renvoie un score d'élongation des pixels non blancs de l'image.
 
-<img src="./data/docs/bandes.png" align="center" style="width:80%; max-height:400px; border: 5px solid">
+<img src="./data/docs/bandes.PNG" align="center" style="width:80%; max-height:400px; border: 5px solid">
 <br><br>
 
 
@@ -88,7 +88,7 @@ puis parcourt chaque ligne à la recherche de pixels noirs non contigus.
 
 Le ratio de lignes contenant des bandes noires séparées est renvoyé.
 
-<img src="./data/docs/bandes.png" align="center" style="width:80%; max-height:400px; border: 5px solid">
+<img src="./data/docs/bandes.PNG" align="center" style="width:80%; max-height:400px; border: 5px solid">
 <br><br>
 
 
@@ -100,8 +100,8 @@ La fonction itérative `boucle()` qui appelle la fonction récursive `entouree()
 
  Si un pixel au moins est entouré "cerné" de cases noires *ie*: pas d'issues vers les extrémités, alors l'image contient une boucle.
 
-<img src="./data/docs/boucles2.png" align="left" style="width:45%; max-height:400px; border: 5px solid">
-<img src="./data/docs/boucles.png" align="center" style="width:45%; max-height:400px; border: 5px solid">
+<img src="./data/docs/boucles2.PNG" align="left" style="width:45%; max-height:400px; border: 5px solid">
+<img src="./data/docs/boucles.PNG" align="center" style="width:45%; max-height:400px; border: 5px solid">
 <p style="float:right">pixels "cernés" en rouge</p>
 <br><br>
 
@@ -134,8 +134,8 @@ où $\bar{x}$ et $\bar{y}$ sont les moyennes des échantillons respectifs.
 
 <p align="center" style="display:inline-block">
   <br>
-  <img src="./data/docs/b03.png" align="left" style="width:30%; height:auto; border: 5px solid">
-  <img src="./data/docs/rotationsb3.PNG" align="left" style="width:30%; height:auto; border: 5px solid">
+  <img src="./data/docs/b03.PNG" align="left" style="width:30%; height:auto; border: 5px solid">
+  <img src="./data/docs/rotationsb3.png" align="left" style="width:30%; height:auto; border: 5px solid">
   <img src="./data/docs/regressionb3.png" align="left" style="width:30%; height:auto; border: 5px solid">
 </p><br>
 
@@ -144,7 +144,7 @@ où $\bar{x}$ et $\bar{y}$ sont les moyennes des échantillons respectifs.
 
 On peut alors grapher le ESS de chaque image:
 <br><br>
-<img src="./data/docs/linreg2.png" align="left" style="width:90%; border: 5px solid"><br>
+<img src="./data/docs/linreg2.PNG" align="left" style="width:90%; border: 5px solid"><br>
 <img src="./data/docs/classement.png" align="left" style="width:90%; border: 5px solid">
 
 <br>
